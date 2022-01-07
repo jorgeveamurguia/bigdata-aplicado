@@ -18,6 +18,8 @@ popd
 # java 1.8 deprecate 
 # Build fail: "javax.xml.bind.annotation does not exist"
 sudo apt install openjdk-8-jdk
+sudo update-alternatives --config java
+
 
 # install 
 apt-get install npm
