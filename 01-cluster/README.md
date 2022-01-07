@@ -1,11 +1,14 @@
-# bigdata-aplicado
+# Instalación de un cluster Ambari 
 
+siguiendo al guia de 
 https://cwiki.apache.org/confluence/display/AMBARI/Quick+Start+Guide
 
-# install maven
+## instalacion de dependencias
+
+### install maven
 apt-get install maven 
 
-# download ambari
+## download ambari
 wget https://downloads.apache.org/ambari/ambari-2.7.6/apache-ambari-2.7.6-src.tar.gz
 tar xfvz apache-ambari-2.7.6-src.tar.gz
 cd apache-ambari-2.7.6-src
@@ -15,21 +18,24 @@ pushd ambari-metrics
 mvn versions:set -DnewVersion=2.7.6.0.0
 popd
 
-# java 1.8 deprecate 
-# Build fail: "javax.xml.bind.annotation does not exist"
+## Instalacion de java 1.8 deprecate, ya que Build fail: "javax.xml.bind.annotation does not exist"
 sudo apt install openjdk-8-jdk
 sudo update-alternatives --config java
 
+# instalar dependencias de python
+sudo apt-get install python-dev
 
-# install 
+##  install ambari web 
 apt-get install npm
 npm install --global yarn
-# yarn install --ignore-engines --pure-lockfile
 
+## añadir la limitacion de dependecias   
+``` -PallModules -Drat.numUnapprovedLicenses=200  ```
 
-# build ambari
-mvn -B clean install jdeb:jdeb -DnewVersion=2.7.6.0.0 -DbuildNumber=5895e4ed6b30a2da8a90fee2403b6cab91d19972 -DskipTests -Dpython.ver="python >= 2.6"
+## construir build ambari
+mvn -B clean install jdeb:jdeb -PallModules -Drat.numUnapprovedLicenses=200  -DnewVersion=2.7.6.0.0 -DbuildNumber=5895e4ed6b30a2da8a90fee2403b6cab91d19972 -DskipTests -Dpython.ver="python >= 2.6"
 
+## si falla poner mvn -rf <nombre del modulo que dío el fallo>
 
 # Step 3: Install Ambari Server
 
