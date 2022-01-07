@@ -15,11 +15,14 @@ pushd ambari-metrics
 mvn versions:set -DnewVersion=2.7.6.0.0
 popd
 
+# java 1.8 deprecate 
+# Build fail: "javax.xml.bind.annotation does not exist"
+sudo apt install openjdk-8-jdk
 
 # install 
 apt-get install npm
 npm install --global yarn
-yarn install --ignore-engines --pure-lockfile
+# yarn install --ignore-engines --pure-lockfile
 
 
 # build ambari
