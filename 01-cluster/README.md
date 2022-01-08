@@ -73,3 +73,7 @@ ambari-agent start
 # Version Definition File ambari github 
 
 https://gist.githubusercontent.com/ferdinandosimonetti/4ba2e7f512af8d0d8a5d11dc40177c3f/raw/6d45fb0fd523971fd75d8e43db1282f507e67cc2/HDP-2.6.5.0-292.xml
+
+
+# usando el repositorio de 
+https://github.com/steven-matison/dfhz_hdp_mpack
